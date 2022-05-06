@@ -61,14 +61,13 @@ jobs:
               run: git add .
             - name: Fix upstream
               run:  |
-                git remote set-url origin https://x-access-token:$COMMITTER_TOKEN@github.com/$GITHUB_REPOSITORY.git
                 git config --global user.email "$USER_EMAIL"
                 git config --global user.name "$USER_NAME"
                 git commit -a -m "Regenerating ZAP"
               env:
                 COMMITTER_TOKEN: ${{ secrets.MATTER_PAT }}
-                USER_EMAIL: ${{ secrets.MATTER_PAT_EMAIL }}
-                USER_NAME: ${{ secrets.MATTER_PAT_NAME }}
+                USER_EMAIL: "test@gmail.com"
+                USER_NAME: "action bot"
                 GITHUB_REPOSITORY: ${{ github.GITHUB_REPOSITORY }}
             - name: Push
               run: git push
