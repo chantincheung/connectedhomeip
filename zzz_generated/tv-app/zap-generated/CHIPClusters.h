@@ -54,30 +54,6 @@ public:
 private:
 };
 
-class DLL_EXPORT NetworkCommissioningCluster : public ClusterBase
-{
-public:
-    NetworkCommissioningCluster() : ClusterBase(app::Clusters::NetworkCommissioning::Id) {}
-    ~NetworkCommissioningCluster() {}
-
-    // Cluster Commands
-    CHIP_ERROR DisableNetwork(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback,
-                              chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs);
-    CHIP_ERROR EnableNetwork(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback,
-                             chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs);
-    CHIP_ERROR GetLastNetworkCommissioningResult(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback,
-                                                 uint32_t timeoutMs);
-    CHIP_ERROR RemoveNetwork(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback,
-                             chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs);
-    CHIP_ERROR ScanNetworks(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback, chip::ByteSpan ssid,
-                            uint64_t breadcrumb, uint32_t timeoutMs);
-
-    // Cluster Attributes
-    CHIP_ERROR ReadAttributeClusterRevision(Callback::Cancelable * onSuccessCallback, Callback::Cancelable * onFailureCallback);
-
-private:
-};
-
 class DLL_EXPORT OperationalCredentialsCluster : public ClusterBase
 {
 public:
